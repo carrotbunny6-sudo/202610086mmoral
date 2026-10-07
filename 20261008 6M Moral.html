@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6M班道德教育居家网课 (PdPR) · 50题深研版</title>
+<style>
+  /* ==============================================================
+     1. 圆体美学、超大字号与视力守护体系 (YuanTi & Accessibility)
+  ============================================================== */
+  :root {
+    --font-family: "Yuanti SC", "YouYuan", "幼圆", "Hiragino Maru Gothic ProN", "Microsoft YaHei Round", cursive, sans-serif;
+    --font-scale: 1;
+    --c-bg: #0b1120;
+    --c-card: #ffffff;
+    --c-text: #0f172a;
+    --c-primary: #dc2626;     /* 大红花红 */
+    --c-yellow: #f59e0b;      /* 暖阳金 */
+    --c-blue: #0284c7;        /* 晴空蓝 */
+    --c-green: #16a34a;       /* 翡翠绿 */
+    --c-border: #1e293b;
+    --glow: 0 0 30px rgba(2, 132, 199, 0.35);
+  }
+
+  /* 视力守护模式：超高对比强光黑金 (WCAG AAA) */
+  body.high-contrast {
+    --c-bg: #000000 !important;
+    --c-card: #050505 !important;
+    --c-text: #ffe600 !important;       /* 荧光黄金字 */
+    --c-primary: #ff4d4d !important;
+    --c-yellow: #ffd700 !important;
+    --c-blue: #00e5ff !important;
+    --c-green: #00ff66 !important;
+    --c-border: #ffffff !important;
+    --glow: 0 0 40px rgba(255, 230, 0, 0.5) !important;
+  }
+
+  body.font-large { --font-scale: 1.35; }
+  body.font-huge  { --font-scale: 1.75; }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--c-bg);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.25) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(220, 38, 38, 0.25) 0%, transparent 40%);
+    color: var(--c-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-size: calc(23px * var(--font-scale));
+    transition: background 0.2s, color 0.2s;
+  }
+
+  /* 顶部 HUD 状态栏 */
+  header {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 4px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .hud-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hud-badge {
+    background: linear-gradient(135deg, var(--c-primary), #ef4444);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 999px;
+    border: 2px solid #ffffff;
+    font-size: 0.8em;
+    font-weight: 900;
+  }
+
+  .hud-btn {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: calc(16px * var(--font-scale));
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .hud-btn:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-2px); }
+  .hud-btn:active { transform: translateY(1px); }
+
+  /* 进度条与积分 */
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: 900;
+  }
+  .progress-capsule {
+    flex: 1;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--c-yellow), var(--c-green), var(--c-blue));
+    border-radius: 999px;
+    transition: width 0.3s ease-out;
+  }
+
+  /* 核心视窗：同屏永远只呈现一件事 */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .viewport-card {
+    background: var(--c-card);
+    border: 5px solid var(--c-border);
+    border-radius: 36px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), var(--glow);
+    width: 100%;
+    max-width: 940px;
+    padding: 38px 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    animation: zoomEntry 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes zoomEntry {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .mega-icon {
+    font-size: calc(80px * var(--font-scale));
+    line-height: 1;
+  }
+
+  .single-statement {
+    font-size: calc(32px * var(--font-scale));
+    font-weight: 900;
+    line-height: 1.5;
+    max-width: 860px;
+    letter-spacing: 1px;
+    color: var(--c-text);
+  }
+
+  .statement-context {
+    font-size: calc(23px * var(--font-scale));
+    font-weight: 800;
+    opacity: 0.9;
+    line-height: 1.6;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 18px 24px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 860px;
+  }
+
+  /* 推进按键：面积大、绝对稳定、极易点击 */
+  .btn-action {
+    background: linear-gradient(180deg, var(--c-primary) 0%, #b91c1c 100%);
+    color: #ffffff;
+    border: 4px solid var(--c-border);
+    border-radius: 28px;
+    font-size: calc(26px * var(--font-scale));
+    font-weight: 900;
+    min-height: 68px;
+    padding: 16px 52px;
+    cursor: pointer;
+    box-shadow: 0 8px 0 var(--c-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.1s ease;
+    position: relative;
+    z-index: 50;
+  }
+  .btn-action:hover { filter: brightness(1.15); transform: translateY(-2px); }
+  .btn-action:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 var(--c-border);
+  }
+
+  .btn-gold {
+    background: linear-gradient(180deg, #ffd700 0%, #d97706 100%);
+    color: #451a03;
+    box-shadow: 0 8px 0 #78350f;
+  }
+
+  /* 学号按钮网格 (1~27) */
+  .number-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 840px;
+    margin-top: 6px;
+  }
+  .num-btn {
+    background: var(--c-card);
+    border: 3px solid var(--c-border);
+    border-radius: 18px;
+    padding: 12px 6px;
+    font-size: calc(22px * var(--font-scale));
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--c-border);
+    transition: all 0.1s ease;
+    color: var(--c-text);
+  }
+  .num-btn:hover {
+    background: #e0f2fe;
+    transform: translateY(-2px);
+    border-color: var(--c-blue);
+  }
+  .num-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--c-border);
+  }
+
+  /* 4 个选项决策网格 (等长严密排版) */
+  .options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 860px;
+  }
+  .option-btn {
+    background: var(--c-card);
+    border: 4px solid var(--c-border);
+    border-radius: 22px;
+    padding: 18px 24px;
+    font-size: calc(21px * var(--font-scale));
+    font-weight: 900;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 6px 0 var(--c-border);
+    transition: all 0.1s ease;
+    color: var(--c-text);
+    line-height: 1.5;
+  }
+  .option-btn:hover {
+    transform: translateX(6px);
+    border-color: var(--c-blue);
+  }
+  .option-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 var(--c-border);
+  }
+  .option-btn.correct {
+    background: #dcfce7 !important;
+    border-color: var(--c-green) !important;
+    color: #14532d !important;
+  }
+  .option-btn.wrong {
+    background: #fee2e2 !important;
+    border-color: var(--c-primary) !important;
+    color: #7f1d1d !important;
+  }
+
+  /* 历史记录抽屉 */
+  #historyDrawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .drawer-body {
+    background: var(--c-card);
+    border: 5px solid var(--c-border);
+    border-radius: 32px;
+    max-width: 840px;
+    width: 100%;
+    max-height: 85vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .history-scroll {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .history-entry {
+    border: 3px solid var(--c-border);
+    border-radius: 18px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 900;
+  }
+
+  #fxCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+    z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="fxCanvas"></canvas>
+
+<!-- 顶部 HUD 状态栏 -->
+<header>
+  <div class="hud-row">
+    <div style="display:flex; align-items:center; gap:14px; font-weight:900; color:#fff;">
+      <div class="hud-badge">柔佛州烟霾停课 · 6M 道德网课</div>
+      <div id="studentInfoTag" style="color:var(--c-yellow);">学号：请选号登录</div>
+      <div>⭐ 成绩: <span id="hudScore" style="color:var(--c-yellow); font-size:1.25em;">0%</span></div>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="hud-btn" onclick="cycleFontScale()">👓 字号</button>
+      <button class="hud-btn" onclick="toggleContrast()">🌗 视力模式</button>
+      <button class="hud-btn" onclick="toggleTTS()">🗣️ 伴读:<span id="ttsStatus">开</span></button>
+      <button class="hud-btn" onclick="openHistory()">📜 研习记录</button>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <span>课程研习总进度:</span>
+    <div class="progress-capsule">
+      <div class="progress-fill" id="globalProgressFill"></div>
+    </div>
+    <span id="progressText" style="min-width:54px; text-align:right;">0%</span>
+  </div>
+</header>
+
+<main>
+  <!-- 核心视窗：永远同屏只呈现一件事 -->
+  <div class="viewport-card" id="gameViewport">
+    <!-- 动态载入 -->
+  </div>
+</main>
+
+<!-- 历史记录抽屉 -->
+<div id="historyDrawer">
+  <div class="drawer-body">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="font-size:1.2em; font-weight:900;">📜 6M班实战答题与研习过程记录</h2>
+      <button class="hud-btn" style="color:var(--c-text); border-color:var(--c-border);" onclick="closeHistory()">关闭 ✖</button>
+    </div>
+    <div class="history-scroll" id="historyItems"></div>
+  </div>
+</div>
+
+<script>
+/* ==============================================================
+   2. 6M 班 27 位同学完整官方名册数据库
+============================================================== */
+const ROSTER_6M = [
+  { no: 1,  en: "ASHRAFF MUHAMMAD DANIEL BIN MOHD NOH", zh: "丹尼尔" },
+  { no: 2,  en: "CINDY TOH AN TIAN", zh: "杜安恬" },
+  { no: 3,  en: "EDEN LAU", zh: "刘奕堂" },
+  { no: 4,  en: "FOO SI SHENG", zh: "符泗盛" },
+  { no: 5,  en: "GAN JIE FOHNG", zh: "颜杰丰" },
+  { no: 6,  en: "GAN ONG SIN", zh: "颜煌星" },
+  { no: 7,  en: "GAN TZI YANG", zh: "颜子杨" },
+  { no: 8,  en: "GAN YU XIN", zh: "颜妤欣" },
+  { no: 9,  en: "GOH JIA LING", zh: "吴佳琳" },
+  { no: 10, en: "JANICE NGOH WAN ROU", zh: "吴婉柔" },
+  { no: 11, en: "JAYDEN WONG JUN YU", zh: "王军宇" },
+  { no: 12, en: "JENNY ANG", zh: "洪婕宁" },
+  { no: 13, en: "KEVIN TOW WEI CHEN", zh: "杜伟诚" },
+  { no: 14, en: "LAU WEI JIE", zh: "刘伟杰" },
+  { no: 15, en: "LAU ZHI XUAN", zh: "刘智瑄" },
+  { no: 16, en: "LIM ZHI YAANG", zh: "林志旸" },
+  { no: 17, en: "LOH YA XUAN", zh: "罗雅轩" },
+  { no: 18, en: "MUHAMMAD ARIF WAFIY BIN AZMI", zh: "华菲" },
+  { no: 19, en: "NG TIN WEI", zh: "黄庭玮" },
+  { no: 20, en: "NG ZI NING", zh: "黄芷宁" },
+  { no: 21, en: "NIVEDHANRAJ A/L P.SIVARAJ", zh: "尼文" },
+  { no: 22, en: "TAN JAY DEN", zh: "陈济恩" },
+  { no: 23, en: "TAN WEI CHENG", zh: "陈伟承" },
+  { no: 24, en: "TEH ZHI JIN", zh: "郑智谨" },
+  { no: 25, en: "THOR LI JUN", zh: "杜俐君" },
+  { no: 26, en: "TOH WU SIANG", zh: "杜武祥" },
+  { no: 27, en: "WANG HONG YONG", zh: "王宏勇" }
+];
+
+let selectedStudent = null;
+
+/* ==============================================================
+   3. 马来西亚标准时间 (UTC+8) 严谨时间引擎
+============================================================== */
+function getMalaysiaDate() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  return new Date(utc + (3600000 * 8));
+}
+
+function formatMYTDate(d) {
+  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+}
+
+function formatMYTTime(d) {
+  const pad = n => n < 10 ? '0' + n : n;
+  let h = d.getHours();
+  let m = d.getMinutes();
+  let s = d.getSeconds();
+  const ampm = h >= 12 ? '下午' : '上午';
+  h = h % 12 || 12;
+  return `${ampm} ${pad(h)}:${pad(m)}:${pad(s)}`;
+}
+
+const sessionTimes = {
+  startObj: getMalaysiaDate(),
+  endObj: null,
+  get formattedStart() { return formatMYTTime(this.startObj); },
+  get formattedEnd() { return this.endObj ? formatMYTTime(this.endObj) : ''; },
+  get formattedDate() { return formatMYTDate(this.startObj); }
+};
+
+/* ==============================================================
+   4. 智能多核普通话伴读系统 (Edge 晓晓优先 / 谷歌流媒体降级)
+============================================================== */
+function isEdgeBrowser() {
+  return navigator.userAgent.indexOf("Edg") > -1;
+}
+
+class SmartMandarinTTS {
+  constructor() {
+    this.enabled = true;
+    this.audioPlayer = new Audio();
+    this.synth = window.speechSynthesis;
+    this.xiaoxiaoVoice = null;
+    this.loadVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => this.loadVoices();
+    }
+  }
+
+  loadVoices() {
+    if (!this.synth) return;
+    const voices = this.synth.getVoices();
+    this.xiaoxiaoVoice = voices.find(v => v.name.includes("Xiaoxiao") || v.name.includes("晓晓"))
+                      || voices.find(v => v.lang === "zh-CN" && v.name.includes("Natural"))
+                      || voices.find(v => v.lang === "zh-CN");
+  }
+
+  speak(text) {
+    if (!this.enabled) return;
+    const cleanText = text.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
+    if (!cleanText) return;
+
+    if (this.synth) this.synth.cancel();
+    this.audioPlayer.pause();
+
+    if (isEdgeBrowser() && this.xiaoxiaoVoice) {
+      const utter = new SpeechSynthesisUtterance(cleanText);
+      utter.voice = this.xiaoxiaoVoice;
+      utter.rate = 1.05;
+      utter.pitch = 1.05;
+      this.synth.speak(utter);
+    } else {
+      const shortText = cleanText.length > 120 ? cleanText.substring(0, 115) + "。" : cleanText;
+      const gUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=${encodeURIComponent(shortText)}`;
+      this.audioPlayer.src = gUrl;
+      this.audioPlayer.play().catch(e => {
+        if (this.synth) {
+          const fallbackUtter = new SpeechSynthesisUtterance(cleanText);
+          const zhVoice = this.synth.getVoices().find(v => v.lang.includes("zh") || v.lang.includes("cmn"));
+          if (zhVoice) fallbackUtter.voice = zhVoice;
+          this.synth.speak(fallbackUtter);
+        }
+      });
+    }
+  }
+
+  stop() {
+    if (this.synth) this.synth.cancel();
+    this.audioPlayer.pause();
+  }
+}
+const tts = new SmartMandarinTTS();
+
+class AudioSfx {
+  constructor() { this.ctx = null; }
+  init() {
+    if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
+  }
+  play(freq, type, dur, delay=0, vol=0.1) {
+    this.init();
+    setTimeout(() => {
+      try {
+        const osc = this.ctx.createOscillator();
+        const g = this.ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+        g.gain.setValueAtTime(vol, this.ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+        osc.connect(g);
+        g.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + dur);
+      } catch(e) {}
+    }, delay);
+  }
+  coin() { this.play(988, 'sine', 0.08, 0, 0.15); this.play(1318, 'sine', 0.25, 70, 0.15); }
+  buzzer() { this.play(180, 'sawtooth', 0.2, 0, 0.25); this.play(140, 'sawtooth', 0.3, 100, 0.25); }
+  fanfare() { [523, 659, 783, 1046].forEach((f, i) => this.play(f, 'triangle', 0.25, i * 90, 0.15)); }
+}
+const sfx = new AudioSfx();
+
+/* ==============================================================
+   5. 完整 50 题数据库 (4选项等长对称，严格答案分布：A:12, B:12, C:12, D:14)
+============================================================== */
+// 答案分布验证：A:12, B:12, C:12, D:14 => 50题
+const RAW_QUESTIONS = [
+  // 1 ~ 4 (A, B, C, D)
+  {
+    val: "信奉上苍", unit: "单元一 和谐心欢畅",
+    q: "面对马来西亚各族同胞不同的宗教信仰，哪一项体现了第一项国家原则“信奉上苍”的精神？",
+    opts: [
+      "尊重彼此的信仰自由，遵奉各自教义向上向善，携手合作共同行善", // A 正 (29字)
+      "强求友族遵守本族仪式，排斥其他宗教背景的同胞，拒绝与他们来往", // B (29字)
+      "在网络发布偏激嘲讽言论，贬低其他群体的祈祷传统，挑起误解矛盾", // C (29字)
+      "只在表面上敷衍应酬，私底下却对其他族群的宗教节日加以肆意诋毁"  // D (29字)
+    ],
+    ans: 0, reason: "国家原则第一项强调信仰向上向善，包容共存是多元大马的立国之石！"
+  },
+  {
+    val: "信奉上苍", unit: "单元一 和谐心欢畅",
+    q: "1970年8月31日国家元首颁布的《国家原则》（Rukun Negara），其首要条目及其意义是什么？",
+    opts: [
+      "忠于君国（Kesetiaan kepada Raja dan Negara），属于第二项核心原则", // A (38字)
+      "信奉上苍（Kepercayaan kepada Tuhan），是全民的精神支柱与立国指引", // B 正 (38字)
+      "维护宪法（Keluhuran Perlembagaan），属于第三项保障全体公民的根本大法", // C (38字)
+      "尊崇法治（Kedaulatan Undang-Undang），属于第四项治理国家的法治准绳"  // D (38字)
+    ],
+    ans: 1, reason: "准确掌握五大国家原则首项，信奉上苍是全民精神支柱！"
+  },
+  {
+    val: "信奉上苍", unit: "单元一 和谐心欢畅",
+    q: "课本第2页佩欣号召朋友们关怀敬老院，不同宗教信仰的伙伴都主动前来帮忙，这说明了什么？",
+    opts: [
+      "只有信奉相同宗教的人才能共同做善事，不同信仰之间无法建立真诚友谊", // A (31字)
+      "参与慈善活动只是为了给自己的宗教做宣传，并不是发自内心的善良举动", // B (31字)
+      "各族宗教教义虽然不同，但都教导信徒爱护弱小，展现殊途同归的博爱", // C 正 (30字)
+      "不同宗教的教徒一起做善事必定会引发教义冲突，应当严格分开各自进行"  // D (31字)
+    ],
+    ans: 2, reason: "宗教信仰殊途同归，都提倡爱护弱小与社会关怀！"
+  },
+  {
+    val: "信奉上苍", unit: "单元一 和谐心欢畅",
+    q: "各族宗教都有其神圣庄严的祈祷节日与禁忌，身处多元文化社会的好公民应当持有怎样的态度？",
+    opts: [
+      "认为友族的斋戒与祈祷仪式过于繁复，应当全部取缔以实现完全的生活统一", // A (33字)
+      "在友族同胞进行严肃祈祷仪式时故意大声喧哗，对其禁忌规定表现得极不耐烦", // B (34字)
+      "强制要求所有非信徒在公共假期期间必须参与特定宗教仪式，否则加以排斥", // C (33字)
+      "主动理解并尊重各族的饮食禁忌与宗教习俗，怀抱包容之心营建和谐社会氛围", // D 正 (34字)
+    ],
+    ans: 3, reason: "互相理解与包容各族宗教习俗，是维系大马多元和谐的基石！"
+  },
+
+  // 5 ~ 8 (A, B, C, D)
+  {
+    val: "善良", unit: "单元二 我为你送暖",
+    q: "课本第16页记载东海岸九河告急发生特大水灾，好公民参与国家救灾行动的“三大范畴”是哪三项？",
+    opts: [
+      "物质上的支援、体力上的奉献以及精神上的鼓舞与慰问", // A 正 (24字)
+      "社交媒体的浏览、网络言论的评论以及坐视不管的围观", // B (24字)
+      "单一种族的救助、私人物资的囤积以及等待官方的通知", // C (24字)
+      "商业利润的谋取、救灾物资的倒卖以及虚假新闻的传播"  // D (24字)
+    ],
+    ans: 0, reason: "全面掌握善良援助同胞的三大核心维度！"
+  },
+  {
+    val: "善良", unit: "单元二 我为你送暖",
+    q: "面对国内水灾灾情严峻且医院血库告急的关头，作为六年级小学生，最恰当的善举是什么？",
+    opts: [
+      "在社交平台随意转发未证实的水位灾情，夸大伤亡数据以引起大众恐慌", // A (30字)
+      "动员成年家人主动前往医院捐血，自己协助整理和打包救灾干粮物资", // B 正 (29字)
+      "认为救灾只是福利部门的责任与小学生无关，继续花大钱购买昂贵玩具", // C (30字)
+      "借机抢购超市里的纯净水与干粮囤积在自家仓库，等待日后高价转售牟利"  // D (31字)
+    ],
+    ans: 1, reason: "体现实质行动与精神鼓舞并重的善良美德！"
+  },
+  {
+    val: "善良", unit: "单元二 我为你送暖",
+    q: "在为水灾灾民折叠千纸鹤或写慰问卡时，这种精神上的关怀对受灾同胞有何重要意义？",
+    opts: [
+      "只是形式上的应付作业，对灾区群众的生活没有任何实质性的帮助与改变", // A (31字)
+      "纯粹是为了在社交媒体上拍照打卡炫耀，博取大众的点赞以提高个人声望", // B (31字)
+      "能够抚慰灾民受创的心灵，给予他们重建家园的精神力量，感受同胞温暖", // C 正 (31字)
+      "仅仅是用来打发课余闲暇时间的无聊手工游戏，灾民收到后也会随手扔掉"  // D (31字)
+    ],
+    ans: 2, reason: "精神慰藉与心理扶持是善良不可或缺的崇高力量！"
+  },
+  {
+    val: "善良", unit: "单元二 我为你送暖",
+    q: "课本第18页漫画中，当得知流浪汉与贫困家庭三餐不继时，小公民如何体现善良的美德？",
+    opts: [
+      "嘲笑他们生活贫困是因为懒惰所致，在公共场所遇到时避之不及甚至言语羞辱", // A (34字)
+      "呼吁大家不要给予任何援助，认为过多关怀会让弱势群体失去自力更生的动力", // B (34字)
+      "只在有利可图或者有记者在场拍照采访时才去慰问，事后完全不跟进任何援助", // C (34字)
+      "与慈善义工团合作开展爱心便当派发活动，在力所能及的范围内提供温暖援助", // D 正 (34字)
+    ],
+    ans: 3, reason: "关怀弱势同胞、付诸真诚援助，是善良价值的深层流露！"
+  },
+
+  // 9 ~ 12 (A, B, C, D)
+  {
+    val: "负责任", unit: "单元三 为了您，马来西亚",
+    q: "高速公路发生严重塞车时后方有救护车鸣笛，哪项是负责任公民应遵守的法定守法举止？",
+    opts: [
+      "绝不驶入应急车道，主动向旁避让形成生命通道，确保救护车顺利通过", // A 正 (30字)
+      "紧跟救护车尾部借道违章超车，抢在前面快速通过原本拥堵不堪的路段", // B (30字)
+      "直接在应急车道停下熄火，走下车围观拍照并发布到网络群组吸引关注", // C (30字)
+      "对救护车的急促警笛声视若无睹，故意在路中央龟速行驶阻碍通行路线"  // D (30字)
+    ],
+    ans: 0, reason: "遵守交通规则、守护他人生命安全是负责任公民的本分！"
+  },
+  {
+    val: "负责任", unit: "单元三 为了您，马来西亚",
+    q: "面对国家统计局官员上门开展全国人口与房屋普查（Banci），公民应当履行的法定责任是：",
+    opts: [
+      "故意隐瞒真实家庭成员数据或虚报收入，误导官方统计造成资源分配偏差", // A (31字)
+      "如实准确申报家庭各项真实资料，协助政府科学规划各项基建与民生政策", // B 正 (31字)
+      "紧闭大门拒绝配合调查人员的询问工作，认为普查与个人日常生活毫无关系", // C (32字)
+      "随意指派年幼无知的孩童胡乱填写申报表单，对数据的真实完整性毫不上心"  // D (32字)
+    ],
+    ans: 1, reason: "如实申报普查数据，是保障国家政策精准制定的法定责任！"
+  },
+  {
+    val: "负责任", unit: "单元三 为了您，马来西亚",
+    q: "课本指出公民在享有国家福利的同时也必须承担义务，下列哪项属于好公民必须履行的责任？",
+    opts: [
+      "只要无人监督就可以随意践踏公园花草，为了个人便利随意破坏公共卫生设施", // A (33字)
+      "在国家举行大选时抱着无所谓的态度放弃投票，对国家的建设与发展漠不关心", // B (33字)
+      "达到法定年龄依法登记成为合格选民，按时如实申报个人所得税并遵纪守法", // C 正 (32字)
+      "通过非法走私或隐瞒收入等手段偷税漏税，认为少交税款是属于个人精明能力"  // D (33字)
+    ],
+    ans: 2, reason: "依法纳税、履行投票权与守法是好公民基本本分！"
+  },
+  {
+    val: "负责任", unit: "单元三 为了您，马来西亚",
+    q: "在学校与公共场所使用公共设施（如电脑室、公厕、饮水机）时，负责任的表现应当是：",
+    opts: [
+      "反正不是自己出钱购买的设施，使用时随意拍打踢踹，损坏后不向管理员报告", // A (33字)
+      "为了方便自己玩耍，故意把公厕水龙头完全扭坏，造成自来水日夜大量白流", // B (32字)
+      "在公共图书的内页随意撕扯乱涂乱画，甚至将珍贵书页撕下带回家据为己有", // C (32字)
+      "小心爱护公共财物、按规范正确操作，发现设备故障时主动向管理人员汇报", // D 正 (32字)
+    ],
+    ans: 3, reason: "爱护公共设施是保障全体国民共享资源的基本责任！"
+  },
+
+  // 13 ~ 16 (A, B, C, D)
+  {
+    val: "感谢", unit: "单元四 感恩之旅",
+    q: "我国拥有姆鲁万年洞穴、热带雨林与多元文化遗产，身为国民应如何表达对这份独特性的感谢？",
+    opts: [
+      "爱护自然生态、绝不乱砍伐林木，在日常中主动向外宾积极推广本土传统文化", // A 正 (33字)
+      "在著名国家历史古迹的石壁上刻字留念，私自采摘国家公园珍稀植物带回家种植", // B (33字)
+      "盲目崇洋媚外贬低本国天然资源与传统美食，认为我国文化底蕴不如其他先进国家", // C (34字)
+      "随意将城市生活工业污水排入原始雨林河流，认为浩瀚大自然可以自然净化一切"  // D (34字)
+    ],
+    ans: 0, reason: "以实际行动守护与珍惜国家的独一无二！"
+  },
+  {
+    val: "感谢", unit: "单元四 感恩之旅",
+    q: "课本第40页凯文向外国朋友介绍马来西亚的多元美食（如蓝花饭、椰浆饭），其出发点是：",
+    opts: [
+      "仅仅为了向外国朋友炫耀自己吃过很多美食，并不在乎国家文化的传承与保留", // A (33字)
+      "以身为大马公民为荣，怀着感恩之心向世界展现我国多元族群融合的独特魅力", // B 正 (33字)
+      "贬低外国的饮食文化不如本国丰富，试图借此证明本国在各个方面都超越外国", // C (33字)
+      "完全是为了推销自己家族开设的餐馆生意，纯粹属于商业利益上的招揽行为"  // D (33字)
+    ],
+    ans: 1, reason: "真诚宣传本土文化，是感恩与认同国家的崇高体现！"
+  },
+  {
+    val: "感谢", unit: "单元四 感恩之旅",
+    q: "马来西亚拥有丰富的热带雨林自然宝库，珍惜这份天然财富的最佳行动是什么？",
+    opts: [
+      "为了获取短期经济暴利，鼓励无节制砍伐林木换取木材出口赚取大量外汇", // A (30字)
+      "随意将城市生活垃圾倾倒在原始森林里，认为大自然的自净能力可以消化", // B (30字)
+      "支持国家公园保育计划，不随意破坏植被，做文明旅客让绿意代代相传", // C 正 (30字)
+      "在森林深处非法点燃篝火野炊并丢弃烟头，完全不顾可能引发严重森林大火"  // D (32字)
+    ],
+    ans: 2, reason: "珍惜大自然赐予的财富，确保国家生态永续发展！"
+  },
+  {
+    val: "感谢", unit: "单元四 感恩之旅",
+    q: "马来西亚各族同胞和睦共处、共庆佳节的独特社会风貌，值得每一位国民铭记与感恩，因为：",
+    opts: [
+      "这样可以吸引外国企业前来投资设厂，纯粹从经济金钱利益角度来看非常划算", // A (33字)
+      "各族人民不用工作就可以享受丰富的节日假期，有利于大家经常聚会娱乐消遣", // B (33字)
+      "多元种族彼此猜疑对立才是正常状态，表面的和谐相处迟早会被利益冲突打破", // C (33字)
+      "多元包容是先辈奋斗奠定的宝贵遗产，促进了国家长治久安与多元文化的繁荣", // D 正 (33字)
+    ],
+    ans: 3, reason: "多元和谐是立国之本，感恩先辈智慧并珍惜各族团结！"
+  },
+
+  // 17 ~ 20 (A, B, C, D)
+  {
+    val: "崇高品德", unit: "单元五 仪礼代言人",
+    q: "课本第46页慧丽代表我国参加亚洲青少年文化交流营，哪种言行举止能够真正提升国家形象？",
+    opts: [
+      "衣着端庄得体、言语温和谦逊、尊重各国礼仪风俗，在赛场上展现大度从容的风范", // A 正 (34字)
+      "输掉比赛后当场大发脾气指责裁判偏心，并在会场高声喧哗以此发泄心中不满情绪", // B (34字)
+      "肆意嘲弄其他国家选手的传统民族服装与发音口音，拒绝与不同文化背景营友交流", // C (34字)
+      "在国际宴会就餐时不遵守就餐礼仪，大声喧哗争抢食物，给外国友人留下糟糕印象"  // D (34字)
+    ],
+    ans: 0, reason: "个人言行即国家窗口，得体礼貌展现文明大国形象！"
+  },
+  {
+    val: "崇高品德", unit: "单元五 仪礼代言人",
+    q: "在接待外国游客或代表国家出国交流时，为什么说国民个人的仪态关乎国家声誉？",
+    opts: [
+      "外国人只在乎本国的经济与科技实力，普通国民在公共场合的举止完全无关紧要", // A (34字)
+      "国民是国家的形象代言人，个人的彬彬有礼与文明素养直接反映国家的文明程度", // B 正 (34字)
+      "只要自己的学业成绩足够优秀，在国际交往中即使傲慢无礼也不会损害国家形象", // C (34字)
+      "个人的文明礼貌仅仅属于私人道德问题，绝对不可能上升到整个国家的形象层面"  // D (34字)
+    ],
+    ans: 1, reason: "举手投足代表大马风范，崇高品德铸就国家软实力！"
+  },
+  {
+    val: "崇高品德", unit: "单元五 仪礼代言人",
+    q: "课本第54页诗句提到“衣着得体不奇异，端庄大方最美丽”，这体现了怎样的品德修养？",
+    opts: [
+      "为了吸引全场目光故意穿着奇装异服，完全不顾及正式外交场合的庄严气氛与规矩", // A (35字)
+      "盲目跟风模仿网络低俗潮流服饰，认为传统的端庄着装规范已经过时无需继续遵守", // B (35字)
+      "懂得在不同社交场合尊重他人、自尊自爱，展现出大方得体且不失庄重的国民风貌", // C 正 (34字)
+      "认为穿着打扮纯属个人私事，即使穿着拖鞋睡衣出入庄重的国际外交宴会也无所谓"  // D (35字)
+    ],
+    ans: 2, reason: "尊重场合、仪态端庄，是崇高品德在生活中的自然流露！"
+  },
+  {
+    val: "崇高品德", unit: "单元五 仪礼代言人",
+    q: "在国际比赛中，我国运动员若遇到裁判判决出现轻微争议，展现崇高品德的最佳做法是：",
+    opts: [
+      "立刻带头煽动在场本国观众投掷水瓶杂物入场抗议，甚至罢赛拒绝继续进行比赛", // A (34字)
+      "在赛后冲向对方选手休息室进行言语辱骂与肢体推搡，将不满情绪完全宣泄出来", // B (34字)
+      "在网络社交平台上组织网民对当值裁判进行恶毒人肉搜索与铺天盖地的人身攻击", // C (34字)
+      "保持克制与从容风度，通过官方正规合法渠道递交申诉，赛场上坚持完赛尊重对手", // D 正 (34字)
+    ],
+    ans: 3, reason: "依循合法正规渠道维权，赛场内外皆显大国民成熟风范！"
+  },
+
+  // 21 ~ 24 (A, B, C, D)
+  {
+    val: "尊重", unit: "单元六 我的保护伞",
+    q: "在公共集会或学校操场听到国歌《Negaraku》奏响时，法律规定国民必须遵守的崇高礼节是：",
+    opts: [
+      "立即停下动作，双脚并拢立正、双臂自然下垂，面向国旗庄严肃然行注目礼", // A 正 (32字)
+      "边吃零食边与身旁同伴嬉笑推搡，视若无睹地继续原本正在进行的喧闹活动", // B (32字)
+      "拿出手机拍摄现场短视频并大声说笑，假装完全没有听到庄严的国歌乐曲声", // C (32字)
+      "低着头快步走向卫生间或走廊角落躲避，生怕站立几分钟耽误自己私人时间"  // D (32字)
+    ],
+    ans: 0, reason: "尊崇国歌是国籍法与公民守则明确规定的崇高仪式！"
+  },
+  {
+    val: "尊重", unit: "单元六 我的保护伞",
+    q: "国花大红花（Bunga Raya）盛开的五片鲜红花瓣，象征着凝聚全体马来西亚国民的什么核心纲领？",
+    opts: [
+      "五个国家经济发展五年计划，是历任政府发展工业科技与提升收入的执行蓝图", // A (36字)
+      "五大国家原则（Rukun Negara），是维系多元国家团结的核心灵魂与立国根基", // B 正 (38字)
+      "五种宪法保障的官方行政语言，代表各个主要族群在日常生活中所使用的母语", // C (36字)
+      "五个主要联邦行政管理部门，负责全国各州各项基础设施建设与经济预算统筹"  // D (36字)
+    ],
+    ans: 1, reason: "五瓣紧密相连，象征五大原则凝聚多元种族团结一心！"
+  },
+  {
+    val: "尊重", unit: "单元六 我的保护伞",
+    q: "面对网络上流行“将真钞剪贴折叠成花束出售”的风潮，符合尊重国家象征原则的正确做法是：",
+    opts: [
+      "积极赞成并效仿跟风制作，认为只要能卖出高价赚钱，如何处置自己拥有的钞票均属自由", // A (38字)
+      "把纸币浸水撕烂拍成恶作剧视频上传网络博取点击率，宣称此举纯粹属于个人的艺术表达", // B (38字)
+      "好言劝阻并指出纸币印有国徽与元首肖像，属于国家主权尊严，法定不可任意剪折损毁", // C 正 (37字)
+      "将真钞全部涂上荧光颜料绘制图案，认为这样可以提高纸币的观赏价值与送礼浪漫气氛"  // D (38字)
+    ],
+    ans: 2, reason: "国家货币代表主权尊严，损毁纸币属于违法失敬行为！"
+  },
+  {
+    val: "尊重", unit: "单元六 我的保护伞",
+    q: "在日常生活中妥善折叠、保管和悬挂辉煌条纹国旗（Jalur Gemilang），正确的认知是：",
+    opts: [
+      "国旗只是一块普通布料，悬挂破损褪色了也无需更换，任由它在雨打风吹中破烂不堪", // A (35字)
+      "把国旗当成擦桌布或脚垫随地踩踏使用，认为这样能充分发挥物品的日常实用价值", // B (34字)
+      "在国旗图案上随意乱涂乱画打广告推销商品，借国家象征的曝光率谋取商业广告利益", // C (35字)
+      "保持国旗干净整洁无破损，降旗后庄重折叠妥善收藏，发自内心尊崇国家崇高象征", // D 正 (34字)
+    ],
+    ans: 3, reason: "国旗是国家最高荣耀与主权象征，必须保持整洁庄重！"
+  },
+
+  // 25 ~ 28 (A, B, C, D)
+  {
+    val: "仁爱", unit: "单元七 月亮一样圆",
+    q: "课本第72页大马自然生态协会（MNS）倡导保护人猿与马来貘，其爱国仁爱价值的核心内涵是：",
+    opts: [
+      "仁爱不仅要关怀受困同胞，更包含爱护国土上的珍稀特有物种，保护脆弱的生态平衡", // A 正 (36字)
+      "私自闯入森林保护区捕猎幼年人猿带回家中饲养当宠物，借此表达对野生动物的喜爱", // B (36字)
+      "认为濒危动物绝种与人类日常生活毫无关联，主张应砍伐全部原始雨林换取商业利益", // C (36字)
+      "将野生保护动物走私贩卖给外国动物园牟取暴利，宣称这是向世界推广大马特有物种"  // D (36字)
+    ],
+    ans: 0, reason: "生态文明与生物多样性是国家繁荣不可分割的瑰宝！"
+  },
+  {
+    val: "仁爱", unit: "单元七 月亮一样圆",
+    q: "课本第76页倡导认明“大马制造”标志购买国货，为什么这是展现爱国仁爱美德的切实行径？",
+    opts: [
+      "宣称本国生产的物品必定质量粗糙不如外国，拒绝购买任何由本土工厂所制造的商品", // A (37字)
+      "支持本土企业发展，减少外汇流失，促进国家经济繁荣稳定并提高全体国民生活水平", // B 正 (37字)
+      "鼓励购买走私逃税的外国违禁产品以求节省开支，忽视该行为对国家税收造成的巨大损害", // C (38字)
+      "购买商品纯粹根据外包装是否奢华名贵，完全不在乎生产制造地与国家经济发展关联"  // D (37字)
+    ],
+    ans: 1, reason: "以切实行动态度支持国家工业发展，造福全马人民！"
+  },
+  {
+    val: "仁爱", unit: "单元七 月亮一样圆",
+    q: "课本第68页提到“仁爱使国家更繁荣”，作为一名小学生，如何在日常生活中展现对国家的仁爱？",
+    opts: [
+      "只要做好自己的功课就行，社会上的公共环境与弱势群体的困难完全不需要去关心", // A (35字)
+      "在公共墙壁上随意涂鸦以抒发自己的情绪，认为只要没有被抓住就不算破坏公共环境", // B (36字)
+      "爱护公物、不乱丢垃圾，与各族同胞和睦相处，主动参与保护祖国绿水青山的活动", // C 正 (35字)
+      "在网络上四处发表恶毒攻击同胞的言论，宣泄自己日常生活中的各种学业压力与不满"  // D (36字)
+    ],
+    ans: 2, reason: "立足当下小事，心怀祖国大爱，仁爱化为切实行动！"
+  },
+  {
+    val: "仁爱", unit: "单元七 月亮一样圆",
+    q: "课本第70页思哲制作明信片寄给好友介绍神山与家乡风貌，这种行为展现了怎样的仁爱之情？",
+    opts: [
+      "纯粹为了向朋友炫耀自己家庭经济条件富裕可以到处旅游，引起身边同学的羡慕嫉妒", // A (36字)
+      "通过网络购买现成盗版风景照片寄送给朋友，借此掩饰自己从不关心家乡历史的真相", // B (36字)
+      "借明信片推销旅游景点的昂贵纪念品，把纯洁深厚的同学友谊当成了商业推销的渠道", // C (36字)
+      "发自内心热爱生我育我的祖国山川，用真诚文字宣传家乡壮丽景观并表达对国土的热爱", // D 正 (37字)
+    ],
+    ans: 3, reason: "知我家乡、爱我中华大马，真挚传递祖国山河之美！"
+  },
+
+  // 29 ~ 32 (A, B, C, D)
+  {
+    val: "公正", unit: "单元八 以理服人",
+    q: "课本第80至87页强调“法律面前人人平等”，我国肩负严查贪腐、捍卫国家法治公义的独立机构是：",
+    opts: [
+      "马来西亚反贪污委员会（SPRM），专责肃贪倡廉以确保法纪公正执行", // A 正 (33字)
+      "国家气象局（METMalaysia），专责监测暴雨气温并发出自然灾害警报", // B (35字)
+      "旅游促进局（Tourism Malaysia），专责向世界各国宣传推广本土文化", // C (36字)
+      "国家公共工程局（JKR），专责勘察规划并修筑全国各类高速公路与桥梁"  // D (33字)
+    ],
+    ans: 0, reason: "准确掌握国家反贪与维护司法廉明的独立公义机构！"
+  },
+  {
+    val: "公正", unit: "单元八 以理服人",
+    q: "在法治社会中，当有权有势的高官或富商触犯法律时，大司寇（司法机关）应当如何处置？",
+    opts: [
+      "看在对方地位崇高的份上免于追究刑事责任，只对其进行私下口头批评了事", // A (33字)
+      "秉公执法、绝不偏私，严格按照法律条文公正审判，维护司法尊严与百姓权益", // B 正 (33字)
+      "接受对方送来的昂贵金钱与厚礼，利用手中审判权力篡改证据将其无罪开释", // C (33字)
+      "将案件无限期拖延不予公开审理，直到社会大众彻底淡忘后再悄悄撤销所有控状"  // D (34字)
+    ],
+    ans: 1, reason: "法不阿贵，绳不挠曲，维护法治社会的公平正义！"
+  },
+  {
+    val: "公正", unit: "单元八 以理服人",
+    q: "作为学校活动的主要负责人，在分配有限的参赛名额时，怎样做才符合“公正”的原则？",
+    opts: [
+      "优先把参赛名额全部留给自己最要好的朋友，不管对方是否具备足够的能力水平", // A (34字)
+      "谁私下送给自己贵重的文具礼物，就把名额私相授受给谁，以此获取个人私利", // B (33字)
+      "制定公开透明的考核标准，根据同学的真实综合表现择优选拔，绝不徇私偏袒", // C 正 (33字)
+      "通过随意抓阄碰运气的方式决定人选，完全不在乎选手平时训练付出的汗水多少"  // D (33字)
+    ],
+    ans: 2, reason: "公私分明、唯才是举，践行以理服人的公正准则！"
+  },
+  {
+    val: "公正", unit: "单元八 以理服人",
+    q: "课本第86页漫画指出国家发展愿景中推行公正制度，其对各族国民共同富裕的核心意义是：",
+    opts: [
+      "确保只有特定优势群体能够优先获得商业垄断特权，其他社群只能被动接受支配", // A (34字)
+      "劫富济贫强制平分所有社会现有财富，让努力奋斗的人与懒惰懈怠的人收获相同", // B (34字)
+      "取消所有法律监督与公权力问责机制，让资本毫无限制地在市场各个领域自由掠夺", // C (35字)
+      "确保资源合理公平分配，消除社会不公与贪污腐败，让全体国民皆享有平等发展机会", // D 正 (36字)
+    ],
+    ans: 3, reason: "公正分配与廉洁治理，是国家繁荣与各族团结的基石！"
+  },
+
+  // 33 ~ 36 (A, B, C, D)
+  {
+    val: "勇敢", unit: "单元九 奔跑吧！小勇士",
+    q: "面对网络上流传诋毁国家医疗水准与疫苗安全的不实耸动谣言，具备勇敢品德的学生应当：",
+    opts: [
+      "不信谣不传谣，通过官方核实网站 Sebenarnya.my 查证，并勇敢站出来澄清事实真相", // A 正 (39字)
+      "抱着唯恐天下不乱的心态随手转发至所有群聊，甚至添油加醋宣扬假消息以引发公众焦虑", // B (39字)
+      "明知属于恶意捏造的不实谣言，但为了迎合发帖的朋友而跟着点赞附和并协助其广泛扩散", // C (39字)
+      "吓得把自己关在房间里终日惶惶不可终日，拒绝相信任何官方正式发布的科学防疫卫生通报"  // D (39字)
+    ],
+    ans: 0, reason: "事实胜于雄辩，勇敢站出来维护国家真相与社会安宁！"
+  },
+  {
+    val: "勇敢", unit: "单元九 奔跑吧！小勇士",
+    q: "当发现有人在公共古迹或旅游景点蓄意涂鸦破坏公物时，有勇敢品德的公民应该怎么做？",
+    opts: [
+      "装作没有看见快速走开，抱着多一事不如少一事的逃避心态，放任破坏公物的行为继续", // A (38字)
+      "在确保自身安全的前提下，勇敢上前制止不当行为，或者迅速向在场管理人员如实举报", // B 正 (37字)
+      "觉得好玩也跟着拿出随身记号笔在旁边涂鸦，甚至拍照上传社交平台夸耀自己的所谓胆量", // C (38字)
+      "站在旁边大声起哄鼓掌叫好，为破坏公物的人出谋划策挑选不易被保安发现的隐蔽角落"  // D (38字)
+    ],
+    ans: 1, reason: "见义勇为、明辨是非，积极护卫国家形象与历史公物！"
+  },
+  {
+    val: "勇敢", unit: "单元九 奔跑吧！小勇士",
+    q: "在国际儿童作文大赛中，敏儿不小心抄袭了他人的文章并获奖，后来她勇于自首认错，这说明了什么？",
+    opts: [
+      "既然已经拿了冠军奖杯就应该死不认账，承认错误只会让自己和国家彻底丢脸", // A (34字)
+      "只要没有被评审人员当场抓包，就应该继续隐瞒真相，将虚假的荣誉占为己有", // B (34字)
+      "勇于承认错误并承担相应责任是真正的大勇敢，能够捍卫国家与个人尊严", // C 正 (32字)
+      "认错退还奖杯是极端愚蠢懦弱的行为，现代社会竞争残酷不择手段才能够生存"  // D (33字)
+    ],
+    ans: 2, reason: "知错能改、坦荡自省，真诚担当胜过虚假荣耀！"
+  },
+  {
+    val: "勇敢", unit: "单元九 奔跑吧！小勇士",
+    q: "在国际赛场代表国家参赛时，面对实力极其强大的外国强劲对手，真正体现‘勇敢’的是：",
+    opts: [
+      "还没正式开始比赛就吓得双腿发软主动弃权认输，生怕在全世界观众面前惨遭失利丢脸", // A (36字)
+      "为了取胜在赛前悄悄给对手的饮用水投掷违禁药品，用见不得光的肮脏手段破坏对手竞技", // B (37字)
+      "比赛一旦陷入落后局势就故意在场上假装受伤退赛，借此推卸战术失败的所有个人责任", // C (36字)
+      "毫不畏惧强手、敢于正面发起挑战，沉着冷静发挥平日苦练水平，全力以赴为国家荣誉拼搏", // D 正 (38字)
+    ],
+    ans: 3, reason: "亮剑拼搏、敢打敢拼，以坚毅勇气展现大马体育精神！"
+  },
+
+  // 37 ~ 40 (A, B, C, D)
+  {
+    val: "诚实", unit: "单元十 最美丽的外套",
+    q: "课本第101页国际棋赛前对手晓静送礼请求振凯“故意下假棋放水”，穿好诚实外衣的正确做法是：",
+    opts: [
+      "严正拒绝假棋与贿赂礼物，坚持在棋盘上堂堂正正凭真本事竞赛，维护国家与个人荣誉", // A 正 (37字)
+      "欣然收下特产并在赛场故意失误输掉棋局，赛后私下向对方索取承诺好的高额金钱报酬", // B (37字)
+      "表面答应放水收下贵重特产但在比赛中出全力取胜，做言行不一、两面三刀的投机之徒", // C (37字)
+      "收下礼物后在棋局中故意拖延比赛时间直到双方超时判和，以此两头讨好逃避正面对决"  // D (37字)
+    ],
+    ans: 0, reason: "穿好‘最美丽的外套’，诚信是立身之本与国家最高荣誉！"
+  },
+  {
+    val: "诚实", unit: "单元十 最美丽的外套",
+    q: "课本第107页佩乐在图书馆借书时发现书中夹着失主的红包现金，诚实的做法应当是：",
+    opts: [
+      "环顾四周无人看见便迅速将现金塞进自己的口袋据为己有，离开图书馆后买零食吃", // A (36字)
+      "立即将钱款如数交给图书馆柜台值班人员，请工作人员协助查阅借阅记录归还失主", // B 正 (35字)
+      "将红包里的现金抽出来自己花掉，只把空红包封套交还给图书馆工作人员以掩人耳目", // C (37字)
+      "把捡到大笔现金的消息发在网络社交群里拍卖炫耀，谁愿意分给自己一半就给谁红包"  // D (36字)
+    ],
+    ans: 1, reason: "拾金不昧、物归原主，是高尚诚实人格的直接流露！"
+  },
+  {
+    val: "诚实", unit: "单元十 最美丽的外套",
+    q: "为什么说“诚实是最美丽的外套”？诚实处事对维系国家和谐有何重要意义？",
+    opts: [
+      "诚实做人只会在竞争激烈的现代社会吃大亏，学会弄虚作假才能在人际交往中占尽便宜", // A (37字)
+      "只要能达到获取巨额财富的目的，在过程中使用欺诈隐瞒手段也是完全可以被理解的", // B (36字)
+      "唯有诚实处事才能赢得他人的真正信任与尊重，建立廉洁互信的社会风气与稳健国家", // C 正 (36字)
+      "诚实只是一种对外包装的社交手段，只要在表面上说好听的客套话就能解决一切矛盾"  // D (36字)
+    ],
+    ans: 2, reason: "人无信不立，国无信不兴，诚信是维系社会的坚实纽带！"
+  },
+  {
+    val: "诚实", unit: "单元十 最美丽的外套",
+    q: "在商业交易与纳税申报中，经营生意的成年公民践行诚实价值观的核心体现是：",
+    opts: [
+      "大肆生产并销售假冒伪劣过期食品，只要能赚取暴利哪怕危害同胞健康安全也在所不惜", // A (36字)
+      "利用虚假合同与两套账本进行恶意逃税偷税，把原本应当上缴国家的税收占为私人财富", // B (36字)
+      "趁国家发生严重灾害物资匮乏之时，蓄意哄抬口罩与药品价格，趁火打劫谋取非法利益", // C (36字)
+      "货真价实经营、明码标价童叟无欺，依法如实申报各项商业税务，做诚信守法的合格纳税人", // D 正 (37字)
+    ],
+    ans: 3, reason: "依法纳税、守法诚信经营，是支撑国家长远繁荣的核心基石！"
+  },
+
+  // 41 ~ 44 (A, B, C, D)
+  {
+    val: "勤勉", unit: "单元十一 逆水行舟",
+    q: "课本第110至120页列举郭鹤年、潘德蕾拉、杨紫琼等典范人物，他们给小公民最重要的启迪是：",
+    opts: [
+      "逆水行舟不进则退，唯有长年累月勤勉奋斗、坚持不懈精益求精，方能在国际舞台为国争光", // A 正 (39字)
+      "成功的关键全凭从天而降的运气与投机取巧，一旦遇到训练瓶颈就应该立刻放弃不再坚持", // B (39字)
+      "只要拥有过人天赋就无需付出刻苦努力，日常学习马虎应付也同样能够取得卓越杰出成就", // C (39字)
+      "只要出身富贵家庭就完全可以躺在功劳簿上坐享其成，根本不需要付出汗水参与社会劳动"  // D (38字)
+    ],
+    ans: 0, reason: "勤勉奋斗是实现人生价值与推动国家强盛的真正基石！"
+  },
+  {
+    val: "勤勉", unit: "单元十一 逆水行舟",
+    q: "课本第113页跳水公主潘德蕾拉八岁被选入体校，每天坚持训练数小时，这种勤勉行为的动力源于：",
+    opts: [
+      "纯粹为了获得高额奖金以过上奢华享受的生活，并没有任何为国家增添荣誉的崇高追求", // A (36字)
+      "热爱国家与体育事业，怀揣为国争光的崇高理想，决心以辛勤汗水换取赛场上的完美绽放", // B 正 (37字)
+      "完全是被教练和家长强迫训练，内心十分反感刻苦练习，一旦无人看管就会偷偷偷懒松懈", // C (38字)
+      "仅仅为了在同学朋友面前出风头博取赞叹，根本不在乎跳水竞技体育所蕴含的坚毅品质"  // D (36字)
+    ],
+    ans: 1, reason: "以坚定信念驱动日复一日的刻苦自律，终成大器！"
+  },
+  {
+    val: "勤勉", unit: "单元十一 逆水行舟",
+    q: "在学习与生活中践行“勤勉”价值观，遇到难题百思不得其解时，应当抱持何种态度？",
+    opts: [
+      "遇到一点困难就直接把作业丢到一边不管不顾，直接抄袭同桌的现成答案应付老师检查", // A (36字)
+      "抱怨题目太难是老师故意为难学生，在课堂上消极对抗，拒绝完成任何具有挑战性的任务", // B (37字)
+      "不轻言放弃，虚心向老师同学请教，主动查阅资料探究钻研，直到把问题彻底弄懂弄透", // C 正 (36字)
+      "直接花钱雇佣校外人员代写功课，自欺欺人假装自己已经完全掌握了相关的学科核心知识"  // D (37字)
+    ],
+    ans: 2, reason: "勤学好问、锲而不舍，方能不断攀登知识高峰！"
+  },
+  {
+    val: "合作", unit: "单元十二 小手牵大手",
+    q: "课本推介皇家警察“志愿巡逻”（VSP）与卫生部 COMBI 计划，其强调的核心公民理念是：",
+    opts: [
+      "将所有防范罪案与环境卫生的工作完全推给政府部门，居民个人只需独善其身、袖手旁观", // A (39字)
+      "打扫卫生时只顾自家院落，故意把积水与枯枝杂物扫向隔壁邻居家门前以减轻自己的劳动负担", // B (40字)
+      "发现社区出现可疑违法犯罪分子时不仅不报警，反而通风报信协助罪犯逃脱法网追捕", // C (37字)
+      "警民与社区大众紧密合作、互为耳目，群策群力才能有效防范社会罪案与遏制骨痛热症疫病", // D 正 (39字)
+    ],
+    ans: 3, reason: "小手牵大手，群策群力才能筑牢国家社区安全防线！"
+  },
+
+  // 45 ~ 48 (A, B, C, D)
+  {
+    val: "合作", unit: "单元十二 小手牵大手",
+    q: "课本第128页社区组织“爱护古迹、爱环保活动”，各族居民分工合作打扫古迹，这展现了：",
+    opts: [
+      "各族同胞团结一致跨越文化隔阂，以实际行动共同维护国家历史遗产，营建和谐社会氛围", // A 正 (38字)
+      "只是为了应付地方政府官员的检查拍照，活动一结束就将垃圾随手丢弃在古迹旅游区四周", // B (38字)
+      "各个族群之间在打扫时互相推卸繁重脏累的工作，都希望别人多干活而自己只负责轻松任务", // C (39字)
+      "为了争夺打扫工具大打出手，把原本旨在促进团结的公益活动变成了族群之间争强斗胜的闹剧", // D (40字)
+    ],
+    ans: 0, reason: "齐心协力守护共同记忆，在协作中增进民族凝聚力！"
+  },
+  {
+    val: "合作", unit: "单元十二 小手牵大手",
+    q: "当国家遭遇严重自然灾害或公共卫生危机时，全体国民如何通过“合作”精神协助国家渡过难关？",
+    opts: [
+      "故意违反各项法规擅自违规聚集，大肆抢购生活必需品高价倒卖，置公共安全于不顾", // A (37字)
+      "积极响应政府号召，遵守卫生防疫准则，守望相助不囤积居奇，团结一心战胜严峻难关", // B 正 (37字)
+      "在网络上四处散播焦虑与猜疑言论，挑拨不同群体之间的矛盾，妨碍国家应对政策推行", // C (37字)
+      "完全不管他人死活，只要确保自己一人的温饱就心安理得，拒绝配合任何公共调配安排"  // D (37字)
+    ],
+    ans: 1, reason: "上下同欲者胜，风雨同舟体现大马坚韧民族力量！"
+  },
+  {
+    val: "中庸", unit: "单元十三 不偏不倚",
+    q: "课本第135页探讨公共场所资源使用，在水电资源与公共设施管理上如何真正体现“中庸之道”？",
+    opts: [
+      "认为水电费用是由政府公帑买单便肆意浪费开销，离开公共休息室时故意不随手关紧水龙头", // A (39字)
+      "为了追求极端节俭而完全排斥现代科技照明与生活设施，宁可在漆黑不便的恶劣环境中生活", // B (39字)
+      "节约用水用电、量力而行不挥霍，既满足生活基本所需，又确保国家公共资源得以永续长青", // C 正 (39字)
+      "只要自己缴纳了微薄的物业维护费，就可以在公共设施内随意破坏挥霍，完全不留给他人使用"  // D (40字)
+    ],
+    ans: 2, reason: "不偏激、不浪费，适度合理使用公物是中庸智慧的体现！"
+  },
+  {
+    val: "中庸", unit: "单元十三 不偏不倚",
+    q: "课本第140页康振打算义卖自制环保盆栽为博爱辅导中心筹款，他在材料选择上体现的中庸之道是：",
+    opts: [
+      "花费巨额金钱购买极其奢华名贵的昂贵装饰材料，最终导致义卖成品售价过高根本无人购买", // A (39字)
+      "采用质量低劣破损且散发异味的有害废弃物制作盆栽，完全不在乎买家健康与义卖产品品质", // B (39字)
+      "完全放弃义卖活动，认为筹款数额有限根本帮不上多大忙，不如直接向外界富商募捐省时省力", // C (40字)
+      "利用废弃塑料瓶与环保材料制作，既降低成本减轻国家垃圾负担，又切实奉献爱心回馈社会", // D 正 (39字)
+    ],
+    ans: 3, reason: "物尽其用、量力而行，不铺张奢华亦不失真挚心意！"
+  },
+
+  // 49 ~ 50 (D, D) -> 使 D 总数为 14
+  {
+    val: "礼让", unit: "单元十四 礼让不委屈",
+    q: "课本第144页记载卫塞节花车游行封路数小时导致堵车，各族车主体现“礼让不委屈”的态度是：",
+    opts: [
+      "狂按汽车喇叭大声喧闹抱怨抗议，甚至试图强行冲破警戒线与游行群众发生激烈的肢体冲突", // A (39字)
+      "在互联网社交群组发表煽动种族对立的仇恨言论，公开呼吁大众抵制其他合法社群的节庆活动", // B (40字)
+      "将车辆直接横停在路口中央彻底瘫痪所有车道，发泄个人赶时间的不满情绪并阻碍警察执法", // C (39字)
+      "保持耐心体谅、服从交警指挥调度，以大度成全促成多元国家文化盛事圆满举行并避免冲突", // D 正 (39字)
+    ],
+    ans: 3, reason: "退一步海阔天空，礼让不是懦弱而是顾全国家团结大局的最高境界！"
+  },
+  {
+    val: "礼让", unit: "单元十四 礼让不委屈",
+    q: "课本第147页讲述清末名将左宗棠出征前与茅舍主人下围棋的礼让典故，其蕴含的深刻哲理是：",
+    opts: [
+      "下棋比赛时不管面对什么情况都必须争强好胜寸步不让，即便伤害国家团结大局也在所不惜", // A (39字)
+      "只有面对比自己地位权势更高的人才需要礼让，面对普通平民百姓则完全可以傲慢无理相待", // B (39字)
+      "为了讨好权贵故意在比赛中作弊输棋，事后私下向对方索取官职与金钱财富作为虚伪交易", // C (38字)
+      "智者善于体谅大局、适时谦逊退让以成全他人，礼让不是懦弱而是拥有海纳百川的崇高胸襟", // D 正 (39字)
+    ],
+    ans: 3, reason: "胸怀大局、克己成全，以谦逊礼让之大智慧化解矛盾维系团结！"
+  }
+];
+
+// 校验答案分布真实性
+const testTally = { 0:0, 1:0, 2:0, 3:0 };
+RAW_QUESTIONS.forEach(q => testTally[q.ans]++);
+console.log("答案分布统计: A =", testTally[0], ", B =", testTally[1], ", C =", testTally[2], ", D =", testTally[3]);
+// 输出: A=12, B=12, C=12, D=14. 绝对严丝合缝！
+
+/* ==============================================================
+   6. 状态机与百分制评分系统 (50 题 × 2% = 100%)
+============================================================== */
+let currentQuestionIndex = 0;
+let scorePercent = 0;
+let actionHistory = [];
+
+function setScreen(html, speechText) {
+  const vp = document.getElementById('gameViewport');
+  vp.innerHTML = html;
+  if (speechText) tts.speak(speechText);
+}
+
+// 界面 1: 学号选择登录界面 (1~27)
+function renderLoginScreen() {
+  tts.speak("同学们好！欢迎参加六年级道德教育居家网课。请在屏幕上点击你的学号确认身份。");
+  let btnsHtml = ROSTER_6M.map(s => `
+    <button class="num-btn" onclick="selectStudent(${s.no})">
+      ${s.no}号<br><span style="font-size:0.8em; font-weight:800;">${s.zh}</span>
+    </button>
+  `).join('');
+
+  setScreen(`
+    <div class="hud-badge" style="font-size:0.85em;">柔佛州教育厅通告 · 6M 班道德居家学习专区</div>
+    <div class="mega-icon">🏫</div>
+    <div class="single-statement">同学们，请点击你的学号确认身份：</div>
+    <div class="number-grid">
+      ${btnsHtml}
+    </div>
+  `, null);
+}
+
+function selectStudent(num) {
+  sfx.coin();
+  const s = ROSTER_6M.find(item => item.no === num);
+  if (!s) return;
+  selectedStudent = s;
+
+  tts.speak(`已确认学号：${s.no}号，${s.zh}同学。点击下方按键即可开始上课。`);
+
+  setScreen(`
+    <div class="hud-badge" style="font-size:0.85em; background:var(--c-green);">学生身份确认</div>
+    <div class="mega-icon">🪪</div>
+    <div class="single-statement" style="color:var(--c-blue);">
+      学号 ${s.no} 号：${s.zh}<br>
+      <span style="font-size:0.75em; color:var(--c-text);">${s.en}</span>
+    </div>
+    <div class="statement-context" style="text-align:center;">
+      已载入 6M 班出勤名册。<br>
+      今日共设 50 道研习考题（每题 2%，满分 100%）。<br>
+      每题先出题读题，听清看懂后方可解锁选项！请专注修习！
+    </div>
+    <div style="display:flex; gap:16px;">
+      <button class="btn-action btn-gold" onclick="confirmStudentAndStart()">确认是我，进入课堂 ➔</button>
+      <button class="btn-action" style="background:#64748b;" onclick="renderLoginScreen()">重新选择学号</button>
+    </div>
+  `, null);
+}
+
+function confirmStudentAndStart() {
+  sfx.coin();
+  sessionTimes.startObj = getMalaysiaDate();
+  document.getElementById('studentInfoTag').textContent = `6M班 ${selectedStudent.no}号 ${selectedStudent.zh}`;
+  renderQuestionPhaseOne();
+}
+
+function updateHUDProgress() {
+  const pct = Math.min(100, Math.round((currentQuestionIndex / RAW_QUESTIONS.length) * 100));
+  document.getElementById('globalProgressFill').style.width = `${pct}%`;
+  document.getElementById('progressText').textContent = `${pct}%`;
+  document.getElementById('hudScore').textContent = `${scorePercent}%`;
+}
+
+/* ==============================================================
+   7. 严密执行“先展示题目读题，然后才展示选项”的二阶段流程
+============================================================== */
+// 第一阶段：只展示题目 + 自动口播题干，选项被严格隐藏
+function renderQuestionPhaseOne() {
+  if (currentQuestionIndex >= RAW_QUESTIONS.length) {
+    renderCompletionScreen();
+    return;
+  }
+  updateHUDProgress();
+
+  const item = RAW_QUESTIONS[currentQuestionIndex];
+  sfx.coin();
+  tts.speak(`第 ${currentQuestionIndex + 1} 题：${item.q}`);
+
+  setScreen(`
+    <div class="hud-badge" style="background:var(--c-blue);">
+      ${item.unit} · 考点审读 (${currentQuestionIndex + 1}/50)
+    </div>
+    <div class="mega-icon">📖</div>
+    <div class="single-statement" style="font-size:1.15em;">
+      ${item.q}
+    </div>
+    <div class="statement-context" style="text-align:center;">
+      🎧 语音正在为您朗读题目。请先专注看懂、思考问题核心，准备好后点击下方按键查看 4 个选项。
+    </div>
+    <button class="btn-action btn-gold" onclick="renderQuestionPhaseTwo()">
+      已听懂题目，查看 4 个选项 ➔
+    </button>
+  `, null);
+}
+
+// 第二阶段：展示 4 个等长平衡选项供学生审慎选择
+function renderQuestionPhaseTwo() {
+  sfx.coin();
+  const item = RAW_QUESTIONS[currentQuestionIndex];
+
+  setScreen(`
+    <div class="hud-badge" style="background:var(--c-blue);">
+      ${item.unit} · 慎思决断 (${currentQuestionIndex + 1}/50)
+    </div>
+    <div class="single-statement" style="font-size:0.95em; opacity:0.85;">
+      ${item.q}
+    </div>
+    <div class="options-grid">
+      ${item.opts.map((optText, i) => `
+        <button class="option-btn" onclick="chooseOption(${i})">
+          <span style="color:var(--c-primary); margin-right:8px;">${String.fromCharCode(65+i)}.</span>
+          <span>${optText}</span>
+        </button>
+      `).join('')}
+    </div>
+  `, null);
+}
+
+window.chooseOption = function(optIndex) {
+  const allBtns = document.querySelectorAll('.option-btn');
+  allBtns.forEach(b => b.disabled = true);
+
+  const item = RAW_QUESTIONS[currentQuestionIndex];
+  const isCorrect = (optIndex === item.ans);
+  const chosenText = item.opts[optIndex];
+
+  if (isCorrect) {
+    allBtns[optIndex].classList.add('correct');
+    sfx.coin();
+    sfx.fanfare();
+    // 50 题，每题占 2%
+    scorePercent = Math.min(100, scorePercent + 2);
+    updateHUDProgress();
+    logHistory(item.val, true, chosenText, item.reason);
+
+    setScreen(`
+      <div class="mega-icon">🌟</div>
+      <div class="single-statement" style="color:var(--c-green);">回答完全正确！(+2%)</div>
+      <div class="statement-context">${item.reason}</div>
+      <button class="btn-action" style="background:var(--c-green);" onclick="nextQuestionStep()">
+        本考点掌握！进入下一题 ➔
+      </button>
+    `, `回答正确！${item.reason}`);
+  } else {
+    allBtns[optIndex].classList.add('wrong');
+    sfx.buzzer();
+    logHistory(item.val, false, chosenText, item.reason);
+
+    setScreen(`
+      <div class="mega-icon">🛑</div>
+      <div class="single-statement" style="color:var(--c-primary);">回答有偏差，需记牢准则！</div>
+      <div class="statement-context">${item.reason}</div>
+      <button class="btn-action" onclick="retryQuestionStep()">
+        重新理解并重试本题 ↺
+      </button>
+    `, `回答有偏差。${item.reason}`);
+  }
+};
+
+window.nextQuestionStep = function() {
+  sfx.coin();
+  currentQuestionIndex++;
+  renderQuestionPhaseOne();
+};
+
+window.retryQuestionStep = function() {
+  sfx.coin();
+  renderQuestionPhaseTwo();
+};
+
+/* ==============================================================
+   8. 结业界面与纯中文官方证明单 PDF (零外部依赖)
+============================================================== */
+function renderCompletionScreen() {
+  sfx.fanfare();
+  triggerConfetti();
+  sessionTimes.endObj = getMalaysiaDate();
+
+  document.getElementById('globalProgressFill').style.width = `100%`;
+  document.getElementById('progressText').textContent = `100%`;
+  document.getElementById('hudScore').textContent = `100%`;
+
+  const durationSec = Math.max(1, Math.round((sessionTimes.endObj - sessionTimes.startObj) / 1000));
+  const mins = Math.floor(durationSec / 60);
+  const secs = durationSec % 60;
+  const durationStr = `${mins > 0 ? mins + ' 分 ' : ''}${secs} 秒`;
+
+  setScreen(`
+    <div class="mega-icon">🏅</div>
+    <div class="single-statement" style="color:var(--c-yellow);">50 题全景深研圆满完成！成绩：100% 满分！</div>
+    <div class="statement-context" style="line-height:1.8;">
+      <div>🏫 <strong>学生班级：</strong>六年级 M 班（6M 班）</div>
+      <div>🪪 <strong>学号姓名：</strong>${selectedStudent.no}号 ${selectedStudent.zh} (${selectedStudent.en})</div>
+      <div>📅 <strong>研习日期：</strong>${sessionTimes.formattedDate}</div>
+      <div>⏱️ <strong>上课时段：</strong>马来西亚时间 ${sessionTimes.formattedStart} 至 ${sessionTimes.formattedEnd}</div>
+      <div>⌛ <strong>有效学时：</strong>${durationStr} (完整学满一节课)</div>
+      <div>⭐ <strong>总评成绩：</strong>100% 满分（全册 50 个考点全部掌握）</div>
+    </div>
+    <button class="btn-action btn-gold" onclick="downloadTeacherCertPDF()">
+      📥 下载《6M班道德网课学习证明单》PDF
+    </button>
+  `, "恭喜你！五十道核心道德考题全部满分通关！请点击按键下载老师的正式研习证明单！");
+}
+
+// 纯原生 JavaScript 生成真实纯中文官方证明单 PDF (无横线副标)
+function downloadTeacherCertPDF() {
+  sfx.coin();
+  const c = document.createElement('canvas');
+  c.width = 1600;
+  c.height = 1140;
+  const ctx = c.getContext('2d');
+
+  // 底色与边框
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, 1600, 1140);
+
+  ctx.lineWidth = 14;
+  ctx.strokeStyle = "#0f172a";
+  ctx.strokeRect(30, 30, 1540, 1080);
+
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = "#dc2626";
+  ctx.strokeRect(50, 50, 1500, 1040);
+
+  // 顶栏红饰条
+  ctx.fillStyle = "#dc2626";
+  ctx.fillRect(50, 50, 1500, 24);
+
+  // 标题 (干净干练，绝无横线副标)
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#991b1b";
+  ctx.font = "bold 56px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillText("六年级 M 班 · 道德教育居家学习（PdPR）研习证明单", 800, 185);
+
+  // 正文说明
+  ctx.fillStyle = "#0f172a";
+  ctx.font = "34px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillText("特此证明：本班以下同学已依时上线，完整修毕规定课程并全数通过道德考核：", 800, 290);
+
+  // 核心学生档案框
+  ctx.fillStyle = "#f8fafc";
+  ctx.fillRect(140, 340, 1320, 460);
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "#cbd5e1";
+  ctx.strokeRect(140, 340, 1320, 460);
+
+  const durationSec = Math.max(1, Math.round((sessionTimes.endObj - sessionTimes.startObj) / 1000));
+  const mins = Math.floor(durationSec / 60);
+  const secs = durationSec % 60;
+  const durationStr = `${mins > 0 ? mins + ' 分 ' : ''}${secs} 秒`;
+
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#1e293b";
+  ctx.font = "32px 'Yuanti SC', 'YouYuan', sans-serif";
+
+  ctx.fillText(`👤 学生姓名：${selectedStudent.zh}（学号：${selectedStudent.no} 号 | ${selectedStudent.en}）`, 180, 415);
+  ctx.fillText(`🏫 班级年级：六年级 M 班（6M 班）`, 180, 485);
+  ctx.fillText(`📅 研习日期：${sessionTimes.formattedDate}`, 180, 555);
+  ctx.fillText(`⏱️ 上课时段：马来西亚标准时间 ${sessionTimes.formattedStart} 至 ${sessionTimes.formattedEnd}`, 180, 625);
+  ctx.fillText(`⌛ 有效研习时长：${durationStr}`, 180, 695);
+  ctx.fillText(`⭐ 考核成绩：100% 满分（全 50 道核心道德考点全数达标）`, 180, 755);
+
+  // 研习内容明细
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#334155";
+  ctx.font = "26px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillText("涵盖考标：国家原则、东海岸水灾送暖、交通应急法纪、反贪会(SPRM)、打假网(Sebenarnya.my)、社会礼让", 800, 850);
+
+  // 老师签名与评语区
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#0f172a";
+  ctx.font = "bold 30px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillText("老师评语：", 180, 930);
+
+  ctx.font = "30px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillStyle = "#15803d";
+  ctx.fillText("“停课不停学！老师为你认真完成道德网课、踏实内化良好公民品德的态度点赞！”", 320, 930);
+
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#0f172a";
+  ctx.font = "bold 32px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillText("6M 班道德教育任课老师 谨签", 1360, 1020);
+  ctx.font = "26px 'Yuanti SC', 'YouYuan', sans-serif";
+  ctx.fillStyle = "#64748b";
+  ctx.fillText(`签发时间：${sessionTimes.formattedDate}`, 1360, 1065);
+
+  // 纯中文作业查讫红印
+  ctx.save();
+  ctx.translate(1380, 920);
+  ctx.rotate(-0.1);
+  ctx.strokeStyle = "#dc2626";
+  ctx.lineWidth = 5;
+  ctx.strokeRect(-110, -45, 220, 90);
+  ctx.fillStyle = "#dc2626";
+  ctx.font = "bold 28px sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("作业查讫", 0, -5);
+  ctx.fillText("成绩 100%", 0, 30);
+  ctx.restore();
+
+  // 离线生成真实 PDF
+  const imgData = c.toDataURL("image/jpeg", 0.92);
+  const pdfBlob = createRawPdfFromImage(imgData, 1600, 1140);
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(pdfBlob);
+  link.download = `6M班_${selectedStudent.no}号_${selectedStudent.zh}_道德网课学习证明单.pdf`;
+  link.click();
+}
+
+function createRawPdfFromImage(dataUrl, w, h) {
+  const base64 = dataUrl.split(',')[1];
+  const binaryImg = atob(base64);
+  const imgLen = binaryImg.length;
+  const imgBytes = new Uint8Array(imgLen);
+  for (let i = 0; i < imgLen; i++) imgBytes[i] = binaryImg.charCodeAt(i);
+
+  const ptW = 842;
+  const ptH = 595;
+
+  const header = "%PDF-1.4\n";
+  const obj1 = "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
+  const obj2 = "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n";
+  const obj3 = `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ptW} ${ptH}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>\nendobj\n`;
+  const obj4Header = `4 0 obj\n<< /Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imgLen} >>\nstream\n`;
+  const obj4Footer = "\nendstream\nendobj\n";
+
+  const streamContent = `q ${ptW} 0 0 ${ptH} 0 0 cm /Im0 Do Q`;
+  const obj5 = `5 0 obj\n<< /Length ${streamContent.length} >>\nstream\n${streamContent}\nendstream\nendobj\n`;
+
+  const enc = new TextEncoder();
+  const p1 = enc.encode(header + obj1 + obj2 + obj3 + obj4Header);
+  const p2 = imgBytes;
+  const p3 = enc.encode(obj4Footer + obj5);
+
+  const offset1 = header.length;
+  const offset2 = offset1 + obj1.length;
+  const offset3 = offset2 + obj2.length;
+  const offset4 = offset3 + obj3.length;
+  const offset5 = offset4 + obj4Header.length + imgLen + obj4Footer.length;
+  const xrefOffset = offset5 + obj5.length;
+
+  const xref = `xref\n0 6\n0000000000 65535 f \n` +
+    `${("0000000000" + offset1).slice(-10)} 00000 n \n` +
+    `${("0000000000" + offset2).slice(-10)} 00000 n \n` +
+    `${("0000000000" + offset3).slice(-10)} 00000 n \n` +
+    `${("0000000000" + offset4).slice(-10)} 00000 n \n` +
+    `${("0000000000" + offset5).slice(-10)} 00000 n \n` +
+    `trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
+
+  const p4 = enc.encode(xref);
+  return new Blob([p1, p2, p3, p4], { type: "application/pdf" });
+}
+
+/* ==============================================================
+   9. 历史研习记录与辅助功能
+============================================================== */
+function logHistory(val, pass, choice, analysis) {
+  actionHistory.unshift({
+    time: formatMYTTime(getMalaysiaDate()),
+    val: val,
+    pass: pass,
+    choice: choice,
+    analysis: analysis
+  });
+}
+
+function openHistory() {
+  sfx.coin();
+  const list = document.getElementById('historyItems');
+  list.innerHTML = '';
+  if (actionHistory.length === 0) {
+    list.innerHTML = `<div style="text-align:center; padding:32px; font-weight:900;">暂无答题记录，开始网课进入实战考核吧！</div>`;
+  } else {
+    actionHistory.forEach(h => {
+      const row = document.createElement('div');
+      row.className = 'history-entry';
+      row.innerHTML = `
+        <div style="flex:1; padding-right:12px;">
+          <div style="color:${h.pass?'var(--c-green)':'var(--c-primary)'}; font-size:1.05em;">
+            ${h.pass?'✔ 考核通过':'✖ 未达标准'} · ${h.val} (${h.time})
+          </div>
+          <div style="font-size:0.85em; opacity:0.8; margin-top:4px;">学生选择：${h.choice}</div>
+          <div style="font-size:0.8em; color:var(--c-blue); margin-top:4px;">老师点拨：${h.analysis}</div>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+  }
+  document.getElementById('historyDrawer').style.display = 'flex';
+}
+
+function closeHistory() {
+  document.getElementById('historyDrawer').style.display = 'none';
+}
+
+let fontMode = 0;
+function cycleFontScale() {
+  sfx.coin();
+  fontMode = (fontMode + 1) % 3;
+  document.body.classList.remove('font-large', 'font-huge');
+  if (fontMode === 1) document.body.classList.add('font-large');
+  if (fontMode === 2) document.body.classList.add('font-huge');
+}
+
+function toggleContrast() {
+  sfx.coin();
+  document.body.classList.toggle('high-contrast');
+}
+
+function toggleTTS() {
+  tts.enabled = !tts.enabled;
+  document.getElementById('ttsStatus').textContent = tts.enabled ? '开' : '关';
+  if (tts.enabled) tts.speak("伴学语音已开启！");
+  else tts.stop();
+}
+
+/* ==============================================================
+   10. 原生 Canvas 物理彩带粒子
+============================================================== */
+const canvas = document.getElementById('fxCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function triggerConfetti() {
+  particles = [];
+  for (let i = 0; i < 90; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height * 0.45,
+      vx: (Math.random() - 0.5) * 20,
+      vy: (Math.random() - 0.7) * 22,
+      size: Math.random() * 8 + 6,
+      color: ['#dc2626', '#f59e0b', '#0284c7', '#16a34a', '#a855f7'][Math.floor(Math.random()*5)],
+      alpha: 1
+    });
+  }
+}
+
+function loopParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.35;
+    p.alpha -= 0.015;
+    if (p.alpha <= 0) {
+      particles.splice(i, 1);
+      continue;
+    }
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.alpha;
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+  }
+  requestAnimationFrame(loopParticles);
+}
+loopParticles();
+
+// 启动学号选择登录界面
+renderLoginScreen();
+</script>
+</body>
+</html>
